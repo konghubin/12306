@@ -1,5 +1,7 @@
 package com.hubindeveloper.train.member.controller;
 
+import com.hubindeveloper.train.common.resp.CommonResp;
+import com.hubindeveloper.train.member.req.MemberRegisterReq;
 import com.hubindeveloper.train.member.service.MemberService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,12 +19,18 @@ public class MemberController {
     private MemberService memberService;
 
     @GetMapping("/count")
-    public Integer count(){
-        return memberService.count();
+    public CommonResp<Integer> count(){
+        int count = memberService.count();
+        CommonResp<Integer> commonResp = new CommonResp<>();
+        commonResp.setContent(count);
+        return commonResp;
     }
 
     @PostMapping("/register")
-    public long register(String mobile){
-        return memberService.register(mobile);
+    public CommonResp<Long> register(MemberRegisterReq req){
+        long registerId = memberService.register(req);
+        CommonResp<Long> commonResp = new CommonResp<>();
+        commonResp.setContent(registerId);
+        return commonResp;
     }
 }
