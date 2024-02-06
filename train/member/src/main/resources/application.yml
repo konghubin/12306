@@ -2,3 +2,21 @@ server:
   port: 8001
   servlet:
     context-path: /member
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: train
+    url: jdbc:mysql://localhost:3306/train?characterEncoding=UTF8&autoReconnect=true&serverTimezone=Asia/Shanghai
+    username: train
+
+mybatis:
+  mapper-locations: classpath:/mapper/**/*.xml
+
+logging:
+  level:
+    com:
+      hubindeveloper:
+        train:
+          member:
+            mapper: trace
