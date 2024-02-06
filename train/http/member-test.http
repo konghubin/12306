@@ -1,4 +1,13 @@
-GET http://localhost:8001/member/count
+GET http://localhost:8000/member/count
 Accept: application/json
+
+###
+
+POST http://localhost:8000/member/register
+Content-Type: application/x-www-form-urlencoded
+
+mobile=123
+
+###
 
 ###
