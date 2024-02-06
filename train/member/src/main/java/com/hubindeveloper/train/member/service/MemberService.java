@@ -1,8 +1,10 @@
 package com.hubindeveloper.train.member.service;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.IdUtil;
 import com.hubindeveloper.train.common.exception.BusinessException;
 import com.hubindeveloper.train.common.exception.BusinessExceptionEnum;
+import com.hubindeveloper.train.common.util.SnowUtil;
 import com.hubindeveloper.train.member.domain.Member;
 import com.hubindeveloper.train.member.domain.MemberExample;
 import com.hubindeveloper.train.member.mapper.MemberMapper;
@@ -38,7 +40,7 @@ public class MemberService {
         }
 
         Member member = new Member();
-        member.setId(1L);
+        member.setId(SnowUtil.getSnowflakeNextId());
         member.setMobile(mobile);
 
         memberMapper.insert(member);
