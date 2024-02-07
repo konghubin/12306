@@ -2,6 +2,7 @@ package com.hubindeveloper.train.member.controller;
 
 import com.hubindeveloper.train.common.resp.CommonResp;
 import com.hubindeveloper.train.member.req.MemberRegisterReq;
+import com.hubindeveloper.train.member.req.MemberSendCodeReq;
 import com.hubindeveloper.train.member.service.MemberService;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
@@ -33,5 +34,11 @@ public class MemberController {
         CommonResp<Long> commonResp = new CommonResp<>();
         commonResp.setContent(registerId);
         return commonResp;
+    }
+
+    @PostMapping("/send-code")
+    public CommonResp<Long> sendCode(@Valid MemberSendCodeReq req){
+        memberService.sendCode(req);
+        return new CommonResp<>();
     }
 }

@@ -3,9 +3,16 @@ Accept: application/json
 
 ###
 
- POST http://localhost:8000/member/register
+POST http://localhost:8000/member/register
 Content-Type: application/x-www-form-urlencoded
 
 mobile=6666
+
+###
+
+POST http://localhost:8000/member/send-code
+Content-Type: application/x-www-form-urlencoded
+
+mobile=12345678901
 
 ###
