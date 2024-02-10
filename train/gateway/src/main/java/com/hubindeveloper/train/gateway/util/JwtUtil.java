@@ -1,4 +1,4 @@
-package com.hubindeveloper.train.common.util;
+package com.hubindeveloper.train.gateway.util;
 
 import cn.hutool.core.date.DateField;
 import cn.hutool.core.date.DateTime;
@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-public class JwtUtil {
+public class  JwtUtil {
     private static final Logger LOG = LoggerFactory.getLogger(JwtUtil.class);
 
     /**
