@@ -1,11 +1,14 @@
 package com.hubindeveloper.train.member.service;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.RandomUtil;
+import cn.hutool.jwt.JWTUtil;
 import com.hubindeveloper.train.common.exception.BusinessException;
 import com.hubindeveloper.train.common.exception.BusinessExceptionEnum;
+import com.hubindeveloper.train.common.util.JwtUtil;
 import com.hubindeveloper.train.common.util.SnowUtil;
 import com.hubindeveloper.train.member.domain.Member;
 import com.hubindeveloper.train.member.domain.MemberExample;
@@ -19,6 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @description：会员功能类
@@ -87,8 +91,9 @@ public class MemberService {
         if(!"8888".equals(code)){
             throw new BusinessException(BusinessExceptionEnum.MEMBER_MOBILE_CODE_ERROR);
         }
+        String token = JwtUtil.createToken(memberDB.getId(), memberDB.getMobile());
 
-        return new MemberLoginResp(memberDB.getId(), memberDB.getMobile());
+        return new MemberLoginResp(memberDB.getId(), memberDB.getMobile(), token);
     }
 
     private Member selectMemberByMobile(String mobile) {
