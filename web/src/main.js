@@ -21,6 +21,11 @@ for (const i in icons) {
  */
 axios.interceptors.request.use(function (config) {
     console.log('请求参数：', config);
+    const token = store.state.member.token;
+    if(token){
+        config.headers.token = token;
+        console.log("请求headers增加token:",token);
+    }
     return config;
 }, error => {
     return Promise.reject(error);
