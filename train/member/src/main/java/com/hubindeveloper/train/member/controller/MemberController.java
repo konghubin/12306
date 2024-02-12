@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @description：
+ * @description：会员前端请求处理
  * @author：Kong
  * @date：2024/2/6
  */
