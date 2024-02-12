@@ -24,7 +24,7 @@ import TheSiderView from "@/components/TheSider.vue";
 import {ref} from "vue";
 import axios from "axios";
 const count = ref(0);
-axios.get("/member/count").then((response) => {
+axios.get("/member/member/count").then((response) => {
   let data = response.data;
   if (data.success) {
     count.value = data.content;

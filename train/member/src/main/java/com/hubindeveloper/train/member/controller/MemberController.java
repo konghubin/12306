@@ -8,10 +8,7 @@ import com.hubindeveloper.train.member.resp.MemberLoginResp;
 import com.hubindeveloper.train.member.service.MemberService;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @description：会员前端请求处理
@@ -19,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date：2024/2/6
  */
 @RestController
+@RequestMapping("/member")
 public class MemberController {
     @Resource
     private MemberService memberService;
