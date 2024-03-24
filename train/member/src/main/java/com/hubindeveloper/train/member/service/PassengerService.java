@@ -4,6 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import com.github.pagehelper.PageHelper;
 import com.hubindeveloper.train.common.context.LoginMemberContext;
 import com.hubindeveloper.train.common.util.SnowUtil;
 import com.hubindeveloper.train.member.domain.Passenger;
@@ -42,6 +43,7 @@ public class PassengerService {
         if(ObjectUtil.isNotNull(req.getMemberId())){
             criteria.andMemberIdEqualTo(req.getMemberId());
         }
+        PageHelper.startPage(1,2);
         List<Passenger> passengerList = passengerMapper.selectByExample(passengerExample);
         return BeanUtil.copyToList(passengerList, PassengerQueryResp.class);
     }
