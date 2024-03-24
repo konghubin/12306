@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 /**
- * @description：分页父类
+ * @description：分页请求父类
  * @author：Kong
  * @date：2024/3/24
  */

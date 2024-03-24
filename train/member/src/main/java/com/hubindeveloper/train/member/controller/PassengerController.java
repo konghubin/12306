@@ -2,6 +2,7 @@ package com.hubindeveloper.train.member.controller;
 
 import com.hubindeveloper.train.common.context.LoginMemberContext;
 import com.hubindeveloper.train.common.resp.CommonResp;
+import com.hubindeveloper.train.common.resp.PageResp;
 import com.hubindeveloper.train.member.req.PassengerQueryReq;
 import com.hubindeveloper.train.member.req.PassengerSaveReq;
 import com.hubindeveloper.train.member.resp.PassengerQueryResp;
@@ -30,9 +31,9 @@ public class PassengerController {
     }
 
     @GetMapping("/query-list")
-    public CommonResp<Object> save(@Valid PassengerQueryReq req){
+    public CommonResp<PageResp<PassengerQueryResp>> queryList(@Valid PassengerQueryReq req){
         req.setMemberId(LoginMemberContext.getId());
-        List<PassengerQueryResp> list = passengerService.queryList(req);
+        PageResp<PassengerQueryResp> list = passengerService.queryList(req);
         return new CommonResp<>(list);
     }
 }
