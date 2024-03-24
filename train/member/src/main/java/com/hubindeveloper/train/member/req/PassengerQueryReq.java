@@ -1,5 +1,6 @@
 package com.hubindeveloper.train.member.req;
 
+import com.hubindeveloper.train.common.req.PageReq;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PassengerQueryReq {
+public class PassengerQueryReq extends PageReq {
     private Long memberId;
 
 }
