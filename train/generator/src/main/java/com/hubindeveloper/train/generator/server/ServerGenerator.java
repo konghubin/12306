@@ -10,9 +10,7 @@ import org.dom4j.io.SAXReader;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @description：
@@ -20,16 +18,16 @@ import java.util.Set;
  * @date：2024/3/25
  */
 public class ServerGenerator {
-    static String servicePath = "train/[module]/src/main/java/com/hubindeveloper/train/[module]/service/";
+    static String serverPath = "train/[module]/src/main/java/com/hubindeveloper/train/[module]/";
     static String pomPath = "train/generator/pom.xml";
     static {
-        new File(servicePath).mkdirs();
+        new File(serverPath).mkdirs();
     }
 
     public static void main(String[] args) throws IOException, TemplateException, DocumentException {
         String generatorPath = getGenerator();
         String module = generatorPath.replace("src/main/resources/generator-config-", "").replace(".xml", "");
-        servicePath = servicePath.replace("[module]", module);
+        serverPath = serverPath.replace("[module]", module);
 
         // 读取table节点
         Document document = new SAXReader().read("train/generator/" + generatorPath);
@@ -51,8 +49,18 @@ public class ServerGenerator {
         param.put("do_main", do_main);
         System.out.println(param);
 
-        FreemarkerUtil.initConfig("service.ftl");
-        FreemarkerUtil.generator(servicePath + Domain + "Service.java", param);
+        gen(Domain, param, "service");
+        gen(Domain, param, "controller");
+    }
+
+    private static void gen(String Domain, Map<String, Object> param, String target) throws IOException, TemplateException {
+        FreemarkerUtil.initConfig(target + ".ftl");
+        String toPath = serverPath + target + "/";
+        new File(toPath).mkdirs();
+        String Target = target.substring(0, 1).toUpperCase() + target.substring(1);
+        String fileName = toPath + Domain + Target + ".java";
+        System.out.println("开始生成：" + fileName);
+        FreemarkerUtil.generator(fileName, param);
     }
 
     private static String getGenerator() throws DocumentException {
