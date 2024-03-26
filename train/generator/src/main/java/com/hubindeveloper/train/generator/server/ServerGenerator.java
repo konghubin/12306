@@ -19,16 +19,17 @@ import java.util.*;
  * @date：2024/3/25
  */
 public class ServerGenerator {
+    static boolean readOnly = false;
+    static String vuePath = "web/src/views/main/";
     static String serverPath = "train/[module]/src/main/java/com/hubindeveloper/train/[module]/";
     static String pomPath = "train/generator/pom.xml";
-    static {
-        new File(serverPath).mkdirs();
-    }
+    static String module = "";
 
     public static void main(String[] args) throws Exception {
         String generatorPath = getGenerator();
-        String module = generatorPath.replace("src/main/resources/generator-config-", "").replace(".xml", "");
+        module = generatorPath.replace("src/main/resources/generator-config-", "").replace(".xml", "");
         serverPath = serverPath.replace("[module]", module);
+        new File(serverPath).mkdirs();
 
         // 读取table节点
         Document document = new SAXReader().read("train/generator/" + generatorPath);
@@ -65,13 +66,16 @@ public class ServerGenerator {
         param.put("tableNameCn", tableNameCn);
         param.put("fieldList", fieldList);
         param.put("typeSet", typeSet);
+        param.put("readOnly", readOnly);
         System.out.println(param);
 
-        gen(Domain, param, "service", "service");
-        gen(Domain, param, "controller", "controller");
-        gen(Domain, param, "req", "saveReq");
+//        gen(Domain, param, "service", "service");
+//        gen(Domain, param, "controller", "controller");
+//        gen(Domain, param, "req", "saveReq");
 //        gen(Domain, param, "req", "queryReq");
 //        gen(Domain, param, "resp", "queryResp");
+
+        genVue(do_main, param);
     }
 
     private static void gen(String Domain, Map<String, Object> param, String packageName, String target) throws IOException, TemplateException {
@@ -80,6 +84,14 @@ public class ServerGenerator {
         new File(toPath).mkdirs();
         String Target = target.substring(0, 1).toUpperCase() + target.substring(1);
         String fileName = toPath + Domain + Target + ".java";
+        System.out.println("开始生成：" + fileName);
+        FreemarkerUtil.generator(fileName, param);
+    }
+
+    private static void genVue(String do_main, Map<String, Object> param) throws IOException, TemplateException {
+        FreemarkerUtil.initConfig("vue.ftl");
+        new File(vuePath + module).mkdirs();
+        String fileName = vuePath + module + "/" + do_main + ".vue";
         System.out.println("开始生成：" + fileName);
         FreemarkerUtil.generator(fileName, param);
     }
