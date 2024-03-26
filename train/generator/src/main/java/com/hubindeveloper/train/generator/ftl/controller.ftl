@@ -1,12 +1,12 @@
-package com.hubindeveloper.train.member.controller;
+package com.hubindeveloper.train.${module}.controller;
 
 import com.hubindeveloper.train.common.context.LoginMemberContext;
 import com.hubindeveloper.train.common.resp.CommonResp;
 import com.hubindeveloper.train.common.resp.PageResp;
-import com.hubindeveloper.train.member.req.${Domain}QueryReq;
-import com.hubindeveloper.train.member.req.${Domain}SaveReq;
-import com.hubindeveloper.train.member.resp.${Domain}QueryResp;
-import com.hubindeveloper.train.member.service.${Domain}Service;
+import com.hubindeveloper.train.${module}.req.${Domain}QueryReq;
+import com.hubindeveloper.train.${module}.req.${Domain}SaveReq;
+import com.hubindeveloper.train.${module}.resp.${Domain}QueryResp;
+import com.hubindeveloper.train.${module}.service.${Domain}Service;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
