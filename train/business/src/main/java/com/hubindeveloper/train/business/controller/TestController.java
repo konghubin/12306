@@ -1,4 +1,4 @@
-package com.hubindeveloper.tarin.business.controller;
+package com.hubindeveloper.train.business.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

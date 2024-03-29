@@ -1,4 +1,4 @@
-package com.hubindeveloper.tarin.business.config;
+package com.hubindeveloper.train.business.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
