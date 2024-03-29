@@ -20,7 +20,7 @@ import java.util.*;
  */
 public class ServerGenerator {
     static boolean readOnly = false;
-    static String vuePath = "web/src/views/main/";
+    static String vuePath = "admin/src/views/main/";
     static String serverPath = "train/[module]/src/main/java/com/hubindeveloper/train/[module]/";
     static String pomPath = "train/generator/pom.xml";
     static String module = "";
@@ -69,11 +69,11 @@ public class ServerGenerator {
         param.put("readOnly", readOnly);
         System.out.println(param);
 
-//        gen(Domain, param, "service", "service");
-//        gen(Domain, param, "controller", "controller");
-//        gen(Domain, param, "req", "saveReq");
-//        gen(Domain, param, "req", "queryReq");
-//        gen(Domain, param, "resp", "queryResp");
+        gen(Domain, param, "service", "service");
+        gen(Domain, param, "controller", "controller");
+        gen(Domain, param, "req", "saveReq");
+        gen(Domain, param, "req", "queryReq");
+        gen(Domain, param, "resp", "queryResp");
 
         genVue(do_main, param);
     }

@@ -6,9 +6,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    password: train
-    url: jdbc:mysql://localhost:3306/train?characterEncoding=UTF8&autoReconnect=true&serverTimezone=Asia/Shanghai
-    username: train
+    password: business
+    url: jdbc:mysql://localhost:3306/business?characterEncoding=UTF8&autoReconnect=true&serverTimezone=Asia/Shanghai
+    username: train_business
 
 mybatis:
   mapper-locations: classpath:/mapper/**/*.xml
