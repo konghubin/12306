@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TrainCarriageSaveReq {
+public class TrainSeatSaveReq {
 
     /**
      * id
@@ -26,10 +26,22 @@ public class TrainCarriageSaveReq {
     private String trainCode;
 
     /**
-     * 厢号
+     * 厢序
      */
-    @NotNull(message = "【厢号】不能为空")
-    private Integer index;
+    @NotNull(message = "【厢序】不能为空")
+    private Integer carriageIndex;
+
+    /**
+     * 排号|01, 02
+     */
+    @NotBlank(message = "【排号】不能为空")
+    private String row;
+
+    /**
+     * 列号|枚举[SeatColEnum]
+     */
+    @NotBlank(message = "【列号】不能为空")
+    private String col;
 
     /**
      * 座位类型|枚举[SeatTypeEnum]
@@ -38,22 +50,10 @@ public class TrainCarriageSaveReq {
     private String seatType;
 
     /**
-     * 座位数
+     * 同车厢座序
      */
-    @NotNull(message = "【座位数】不能为空")
-    private Integer seatCount;
-
-    /**
-     * 排数
-     */
-    @NotNull(message = "【排数】不能为空")
-    private Integer rowCount;
-
-    /**
-     * 列数
-     */
-    @NotNull(message = "【列数】不能为空")
-    private Integer colCount;
+    @NotNull(message = "【同车厢座序】不能为空")
+    private Integer carriageSeatIndex;
 
     /**
      * 新增时间
