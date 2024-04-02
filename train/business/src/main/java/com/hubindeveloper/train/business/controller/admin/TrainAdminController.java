@@ -1,5 +1,6 @@
 package com.hubindeveloper.train.business.controller.admin;
 
+import com.hubindeveloper.train.business.service.TrainSeatService;
 import com.hubindeveloper.train.common.context.LoginMemberContext;
 import com.hubindeveloper.train.common.resp.CommonResp;
 import com.hubindeveloper.train.common.resp.PageResp;
@@ -19,6 +20,9 @@ public class TrainAdminController {
 
     @Resource
     private TrainService trainService;
+
+    @Resource
+    private TrainSeatService trainSeatService;
 
     @PostMapping("/save")
     public CommonResp<Object> save(@Valid @RequestBody TrainSaveReq req) {
@@ -41,6 +45,12 @@ public class TrainAdminController {
     @DeleteMapping("/delete/{id}")
     public CommonResp<Object> delete(@PathVariable Long id) {
         trainService.delete(id);
+        return new CommonResp<>();
+    }
+
+    @GetMapping("/gen-seat/{trainCode}")
+    public CommonResp<Object> genSeat(@PathVariable String trainCode) {
+        trainSeatService.genTrainSeat(trainCode);
         return new CommonResp<>();
     }
 

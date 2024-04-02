@@ -6,6 +6,8 @@ import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.hubindeveloper.train.business.domain.TrainSeatExample;
+import com.hubindeveloper.train.business.enums.SeatColEnum;
 import com.hubindeveloper.train.common.resp.PageResp;
 import com.hubindeveloper.train.common.util.SnowUtil;
 import com.hubindeveloper.train.business.domain.TrainCarriage;
@@ -25,6 +27,11 @@ public class TrainCarriageService {
     private TrainCarriageMapper trainCarriageMapper;
     public void save(TrainCarriageSaveReq req){
         DateTime now = DateTime.now();
+
+        List<SeatColEnum> seatColEnums = SeatColEnum.getColsByType(req.getSeatType());
+        req.setColCount(seatColEnums.size());
+        req.setSeatCount(req.getColCount() * req.getRowCount());
+
         TrainCarriage trainCarriage = BeanUtil.copyProperties(req, TrainCarriage.class);
         if(ObjectUtil.isNull(trainCarriage.getId())){
             trainCarriage.setId(SnowUtil.getSnowflakeNextId());
@@ -55,5 +62,13 @@ public class TrainCarriageService {
 
     public void delete(Long id){
         trainCarriageMapper.deleteByPrimaryKey(id);
+    }
+
+    public List<TrainCarriage> selectByTrainCode(String trainCode){
+        TrainCarriageExample trainCarriageExample = new TrainCarriageExample();
+        trainCarriageExample.setOrderByClause("`index` asc");
+        TrainCarriageExample.Criteria criteria = trainCarriageExample.createCriteria();
+        criteria.andTrainCodeEqualTo(trainCode);
+        return trainCarriageMapper.selectByExample(trainCarriageExample);
     }
 }
