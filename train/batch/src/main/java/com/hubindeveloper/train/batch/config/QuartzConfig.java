@@ -1,4 +1,4 @@
-//package com.hubindeveloper.train.batch.config;// package com.jiawa.train.batch.config;
+//package com.hubindeveloper.train.batch.config;
 //
 //import com.hubindeveloper.train.batch.job.TestJob;
 //import org.quartz.*;
