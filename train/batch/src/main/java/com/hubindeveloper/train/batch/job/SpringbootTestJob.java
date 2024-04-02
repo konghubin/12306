@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
  * @date：2024/4/2
  */
 @Component
-@EnableScheduling
+//@EnableScheduling
 public class SpringbootTestJob {
-    @Scheduled(cron = "0/5 * * * * ?")
-    private void test(){
-        System.out.println("定时任务测试");
-    }
+//    @Scheduled(cron = "0/5 * * * * ?")
+//    private void test(){
+//        System.out.println("定时任务测试");
+//    }
 }
