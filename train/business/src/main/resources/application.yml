@@ -20,5 +20,5 @@ logging:
     com:
       hubindeveloper:
         train:
-          member:
+          business:
             mapper: trace
