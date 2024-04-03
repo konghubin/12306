@@ -5,7 +5,7 @@
       <train-select-view v-model="params.code" width="200px"></train-select-view>
       <a-button type="primary" @click="handleQuery()">刷新</a-button>
       <a-button type="primary" @click="onAdd">新增</a-button>
-      <a-button type="danger" @click="onClickGenDaily">手动生成车次信息</a-button>
+      <a-button type="primary" danger @click="onClickGenDaily">手动生成车次信息</a-button>
     </a-space>
   </p>
   <a-table :dataSource="dailyTrains"
