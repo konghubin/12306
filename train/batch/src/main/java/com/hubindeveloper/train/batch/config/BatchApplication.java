@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 
@@ -11,6 +12,7 @@ import org.springframework.core.env.Environment;
 @ComponentScan("com.hubindeveloper")
 @Slf4j
 @MapperScan("com.hubindeveloper.train.*.mapper")
+@EnableFeignClients("com.hubindeveloper.train.batch.feign")
 public class BatchApplication {
 
 	public static void main(String[] args) {
