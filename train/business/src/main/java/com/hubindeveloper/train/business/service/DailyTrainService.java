@@ -8,6 +8,7 @@ import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hubindeveloper.train.business.domain.Train;
+import com.hubindeveloper.train.business.domain.TrainStation;
 import com.hubindeveloper.train.common.resp.PageResp;
 import com.hubindeveloper.train.common.util.SnowUtil;
 import com.hubindeveloper.train.business.domain.DailyTrain;
@@ -31,6 +32,8 @@ public class DailyTrainService {
     private DailyTrainMapper dailyTrainMapper;
     @Resource
     private TrainService trainService;
+    @Resource
+    private DailyTrainStationService dailyTrainStationService;
 
     public void save(DailyTrainSaveReq req){
         DateTime now = DateTime.now();
@@ -100,5 +103,8 @@ public class DailyTrainService {
         dailyTrain.setCreateTime(now);
         dailyTrain.setUpdateTime(now);
         dailyTrainMapper.insert(dailyTrain);
+
+        // 生产该车次的车站数据
+        dailyTrainStationService.genDaily(date, train.getCode());
     }
 }
