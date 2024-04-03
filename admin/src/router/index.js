@@ -28,12 +28,18 @@ const routes = [{
       component: () => import('../views/main/base/train-seat.vue'),
     }]
   }, {
+    path: 'business/',
+    children: [{
+      path: 'daily-train',
+      component: () => import('../views/main/business/daily-train.vue'),
+    }]
+  }, {
     path: 'batch/',
     children: [{
       path: 'job',
       component: () => import('../views/main/batch/job.vue')
     }]
-  },]
+  }]
 }, {
   path: '',
   redirect: '/welcome'
