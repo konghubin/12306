@@ -2,7 +2,7 @@ POST http://localhost:8000/batch/admin/job/add
 Content-Type: application/json
 
 {
-  "name": "com.hubindeveloper.train.batch.job.TestJob",
+  "name": "com.hubindeveloper.train.batch.job.DailyTrainJob",
   "jobGroupName": "default",
   "cronExpression": "*/2 * * * * ?",
   "desc": "test job"
@@ -18,7 +18,7 @@ POST http://localhost:8000/batch/admin/job/pause
 Content-Type: application/json
 
 {
-  "name": "com.hubindeveloper.train.batch.job.TestJob",
+  "name": "com.hubindeveloper.train.batch.job.DailyTrainJob",
   "jobGroupName": "default"
 }
 
@@ -50,7 +50,7 @@ POST http://localhost:8000/batch/admin/job/delete
 Content-Type: application/json
 
 {
-"name": "com.hubindeveloper.train.batch.job.TestJob",
+"name": "com.hubindeveloper.train.batch.job.DailyTrainJob",
 "jobGroupName": "default"
 }
 
