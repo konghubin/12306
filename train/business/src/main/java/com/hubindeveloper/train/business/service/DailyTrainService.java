@@ -21,6 +21,7 @@ import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.juli.logging.Log;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -38,6 +39,7 @@ public class DailyTrainService {
     private DailyTrainCarriageService dailyTrainCarriageService;
     @Resource
     private DailyTrainSeatService dailyTrainSeatService;
+    @Resource DailyTrainTicketService dailyTrainTicketService;
 
     public void save(DailyTrainSaveReq req){
         DateTime now = DateTime.now();
@@ -92,6 +94,7 @@ public class DailyTrainService {
         }
     }
 
+    @Transactional
     private void genDailyTrain(Date date, Train train) {
         // 删除该车次已有的数据
         DailyTrainExample dailyTrainExample = new DailyTrainExample();
@@ -114,6 +117,8 @@ public class DailyTrainService {
         dailyTrainCarriageService.genDaily(date, train.getCode());
         // 生成该车次的座位数据
         dailyTrainSeatService.genDaily(date, train.getCode());
+        // 生成该车次的余票数据
+        dailyTrainTicketService.genDaily(dailyTrain, date, train.getCode());
 
     }
 }
