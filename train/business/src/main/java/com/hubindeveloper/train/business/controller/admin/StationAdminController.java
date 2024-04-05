@@ -37,7 +37,7 @@ public class StationAdminController {
     }
 
     @GetMapping("/query-all")
-    public CommonResp<List<StationQueryResp>> queryList() {
+    public CommonResp<List<StationQueryResp>> queryAll() {
         List<StationQueryResp> list = stationService.queryAll();
         return new CommonResp<>(list);
     }
