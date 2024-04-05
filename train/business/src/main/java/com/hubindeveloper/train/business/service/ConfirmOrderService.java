@@ -3,7 +3,6 @@ package com.hubindeveloper.train.business.service;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.util.ObjectUtil;
-import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hubindeveloper.train.common.resp.PageResp;
@@ -12,7 +11,7 @@ import com.hubindeveloper.train.business.domain.ConfirmOrder;
 import com.hubindeveloper.train.business.domain.ConfirmOrderExample;
 import com.hubindeveloper.train.business.mapper.ConfirmOrderMapper;
 import com.hubindeveloper.train.business.req.ConfirmOrderQueryReq;
-import com.hubindeveloper.train.business.req.ConfirmOrderSaveReq;
+import com.hubindeveloper.train.business.req.ConfirmOrderDoReq;
 import com.hubindeveloper.train.business.resp.ConfirmOrderQueryResp;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,7 @@ import java.util.List;
 public class ConfirmOrderService {
     @Resource
     private ConfirmOrderMapper confirmOrderMapper;
-    public void save(ConfirmOrderSaveReq req){
+    public void save(ConfirmOrderDoReq req){
         DateTime now = DateTime.now();
         ConfirmOrder confirmOrder = BeanUtil.copyProperties(req, ConfirmOrder.class);
         if(ObjectUtil.isNull(confirmOrder.getId())){
@@ -55,5 +54,19 @@ public class ConfirmOrderService {
 
     public void delete(Long id){
         confirmOrderMapper.deleteByPrimaryKey(id);
+    }
+
+    public void doConfirm(ConfirmOrderDoReq req){
+        // 业务校验，如车次是否存在、余票是否存在、同乘客同车次是否买票。
+
+        // 保存确认订单表。
+
+        // 查出余票记录。
+
+        // 扣减余票数量，判断余票是否足够。
+
+        // 选座。
+
+        // 选中座位后事务处理。
     }
 }
