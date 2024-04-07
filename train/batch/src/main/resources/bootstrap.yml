@@ -1,10 +1,9 @@
 spring:
   profiles:
-    ## 启动环境，nacos会根据环境读不同的配置dataId：member-dev.properties
+    ## 启动环境，nacos会根据环境读不同的配置dataId：gateway-dev.properties
     active: dev
   application:
-    name: member
-  cloud:
+    name: batch
     nacos:
       serverAddr: 127.0.0.1:8848
       username: 'nacos'
