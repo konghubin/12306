@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    ## 启动环境，nacos会根据环境读不同的配置dataId：member-dev.properties
+    active: dev
+  application:
+    name: member
+  cloud:
+    nacos:
+      serverAddr: 127.0.0.1:8848
+      username: 'nacos'
+      password: 'nacos'
+      config:
+        file-extension: properties
