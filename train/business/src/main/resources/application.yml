@@ -11,6 +11,11 @@ spring:
     password: business
     url: jdbc:mysql://localhost:3306/business?characterEncoding=UTF8&autoReconnect=true&serverTimezone=Asia/Shanghai
     username: train_business
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password: redis
 
 mybatis:
   mapper-locations: classpath:/mapper/**/*.xml
@@ -22,3 +27,4 @@ logging:
         train:
           business:
             mapper: trace
+
